@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .panel{
+            padding: 4px 10px;
+            border-radius: 5px;
+        }
+        .blue{
+            background-color: #DDEDFF;
+            color: #0087FF;
+        }
+        .purple{
+            background-color: #DFCCFF;
+            color: #7F51F4;
+        }
+        .yellow{
+            background-color: cornsilk;
+            color: darkorange;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="blue bold">
+            #1
+            <input class="panel" type="button" value="Run" onclick="showDate1();">
+            <p id="pShowDate1">
+        </div>
+        <div class="purple bold">
+            #2
+            <input class="panel" type="button" value="Run" onclick="showDate2()">
+            <p id="pShowDate2">
+        </div>
+        <div class="yellow bold">
+            #3
+            <input class="panel" type="button" value="Clear" id="clear">
+        </div>
+    </div>
+
+    <script>
+        var clear = document.querySelector("#clear");
+
+        function showDate1() {
+		    window.location.href='https://www.google.com/search?q=current+time&rlz=1C5CHFA_enUS1024US1024&oq=current+ti&aqs=chrome.0.0i433i457i512j69i57j0i402j0i402i512j0i512l2j0i131i433i512j0i512j0i131i433j0i512.5175j0j15&sourceid=chrome&ie=UTF-8'
+	    }
+
+        const showDate2=() =>{
+		    document.getElementById("pShowDate2").innerHTML = Date();
+	    }
+
+        clear.onclick=function(){
+            window.location.reload();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Convert temperatures</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+    <h1>Temperature Converter</h1>
+    <h3>Input a number to make a conversion</h3>
+    <div id="container">
+    <div id="converter">
+    <div class="section">
+    <label for="cel">Degrees Celsius:</label>
+    <input type="number" id="cel" name="cel" onkeyup="convertC()">
+    </div>
+
+    <div class="section">
+    <label for="fahResult">Degrees Fahrenheit:</label> 
+    <input type="number" id="fahResult" name="fahResult" onkeyup="convertF()">
+    </div>
+
+    <div class="section">
+    <label for="kelResult">Degrees Kelvin:</label>
+    <input type="number" id="kelResult" name="kelResult" onkeyup="convertK()" >
+    </div>
+    </div>
+
+    <script src="convertTemperatures.js"></script>
+    </div>
+    </main>
+</body>
+</html>

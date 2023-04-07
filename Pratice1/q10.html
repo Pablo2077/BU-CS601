@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question10</title>
+    <style media="screen">
+        #circle {
+            width: 50px;
+            height: 50px;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            border-radius: 25px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle">
+    </div>
+    <form class="">
+        <select id="red" onclick="fillr()">
+
+        </select>
+        <select id="green" onclick="fillg()">
+
+        </select>
+        <select id="blue" onclick="fillb()">
+
+        </select>
+        <button type="button" name="button" onclick="color(red.value,green.value,blue.value)">Submit</button>
+        <button type="reset" name="button" onclick="white()">reset</button>
+    </form>
+    <script>
+        function color(red,green,blue){
+            document.getElementById("circle").style.backgroundColor="rgb(" + red + "," + green + "," + blue + ")";
+        }
+        function white(){
+            document.getElementById("circle").style.backgroundColor="white";
+        }
+        function fillr(){
+            var x=document.getElementById("red");
+            for(var i=0;i<256;i++){
+                var op=document.createElement("option");
+                op.text=i;
+                x.add(op);
+            }
+        }
+        function fillg(){
+            var x=document.getElementById("green");
+            for(var i=0;i<256;i++){
+                var op=document.createElement("option");
+                op.text=i;
+                x.add(op);
+            }
+        }
+        function fillb(){
+            var x=document.getElementById("blue");
+            for(var i=0;i<256;i++){
+                var op=document.createElement("option");
+                op.text=i;
+                x.add(op);
+          }
+        }
+      </script>
+</body>
+</html>

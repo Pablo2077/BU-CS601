@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question5</title>
+    <style>
+        .star{
+            color: red;
+        }
+        fieldset{
+            margin-top: 10px;
+            width: 500px;
+        }
+        div{
+            display: inline-block; 
+            width: 100px; 
+        }
+        textarea{
+            width: 200px;
+            margin-top: 10px;
+            margin-left: 24px;
+            height: 70px;
+        }
+        .box{
+            width: 200px;
+            margin-top: 10px;
+        }
+        #name{
+            margin-left: 80px;
+        }
+        #telephone{
+            margin-left: 60px;
+        }
+        #email{
+            margin-left: 80px;
+        }
+        #age{
+            margin-left: 90px;
+        }
+        #gender{
+            width: 209px;
+            margin-left: 77px;
+        }
+
+    </style>
+</head>
+<body>
+  <h1>Zoo Keeper Application Form</h1>
+  <form id="zooKeeperForm" action="#" onsubmit="return validateForm()">
+    <p><i>Please complete the form. Mandatory fields are marked with a </i><em class="star">*</em></p>
+    <fieldset>
+      <legend>CONTACT DETAILS</legend>
+      <label for="name">Name<em class="star">*</em></label>
+      <input class="box" id="name" placeholder=""><br>
+      <label for="telephone">Telephone</label>
+      <input class="box" id="telephone" placeholder=""><br>
+      <label for="email">Email<em class="star">*</em></label>
+      <input class="box" id="email" type="email"><br>
+    </fieldset>
+    <fieldset>
+      <legend>PERSONAL INFORMATION</legend>
+      <label for="age"><em class="star">*</em>Age</label>
+      <input class="box" id="age" type="number"><br>
+      <label for="gender">Gender</label>
+      <select class="box" id="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select><br>
+      <div>When did you first know you wanted to be a zoo-keeper?</div>
+      <textarea  rows="10" cols="30" class="box" id="comments" oninput="validateComments(this)"></textarea>
+    </fieldset>
+    <fieldset>
+      <legend>Pick Your Favorite Animals</legend>
+      <label for="zebra"><input id="zebra" type="checkbox"> Zebra</label>
+      <label style="margin-left: 60px;" for="cat"><input id="cat" type="checkbox"> Cat</label>
+      <label style="margin-left: 60px;" for="anaconda"><input id="anaconda" type="checkbox"> Anaconda</label>
+      <label style="margin-left: 60px;" for="human"><input id="human" type="checkbox"> Human</label>
+      <br>
+      <label for="elephant"><input id="elephant" type="checkbox"> Elephant</label>
+      <label style="margin-left: 40px;" for="wildebeest"><input id="wildebeest" type="checkbox"> Wildebeest</label>
+      <label style="margin-left: 12px;" for="pigeon"><input id="pigeon" type="checkbox"> Pigeon</label>
+      <label style="margin-left: 80px;" for="crab"><input id="crab" type="checkbox"> Crab</label>
+    </fieldset>
+    <p><input type="submit" value="Submit Application"></p>
+  </form>
+</body>
+</html>

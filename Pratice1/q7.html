@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question7</title>
+</head>
+<body>
+    <h3>Please input your SQL keyword in textarea:</h3>
+    <textarea name="text" id="ta" cols="30" rows="10"></textarea>
+    <input id="clickMe" type="button" value="clickMe">
+    <script>
+        document.getElementById("clickMe").onclick = function(){
+            var string = document.getElementById('ta').value;
+            if(string=="delete"){
+                string = string.split("")
+                string = string.reverse()
+                string = string.join("")
+                alert(string)
+                return;
+            }else if(string=="truncate"){
+                string = string.split("")
+                string = string.reverse()
+                string = string.join("")
+                alert(string)
+                return;
+            }else if(string=="update"){
+                string = string.split("")
+                string = string.reverse()
+                string = string.join("")
+                alert(string)
+                return;
+            }else if(string=="insert"){
+                string = string.split("")
+                string = string.reverse()
+                string = string.join("")
+                alert(string)
+                return;
+            }else if(string=="drop"){
+                string = string.split("")
+                string = string.reverse()
+                string = string.join("")
+                alert(string)
+                return;
+            }else{
+                alert('Error! Make sure the keyword you input is correct!')
+            }
+        };
+    </script>
+</body>
+</html>

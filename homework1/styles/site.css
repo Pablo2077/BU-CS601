@@ -1,0 +1,11 @@
+body {
+    font-family: 'Times New Roman', Times, serif
+}
+div{
+    font-size: medium;
+}
+.box1{
+    width: auto;
+    height: auto;
+    margin-left: 100px;    
+}

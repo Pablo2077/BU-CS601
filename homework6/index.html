@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Take 2 arrays and merge them.
+    const arr1 = [1, 2, 3];
+    const arr2 = [4, 5, 6];
+    const arr3 = [...arr1, ...arr2];
+    console.log(arr3);
+
+    // Create a array of 5 things and make a copy.
+    const arr4 = [1, 2, 3, 4, 5];
+    const arr5 = [...arr4];
+    console.log(arr5);
+
+    //Using an array of 5 items, put in 2 additional items into it, starting at the 3^rd position.
+    const arr6 = [1, 2, 3, 4, 5];
+    const arr7 = [...arr6.slice(0, 2), 6, 7, ...arr6.slice(2)]; // add 6, 7 in the 3rd position
+    console.log(arr7);
+
+    //Create 2 object literals and merge them together.
+    const obj1 = { a: 1, b: 2 };
+    const obj2 = { c: 3, d: 4 };
+    const obj3 = { ...obj1, ...obj2 };
+    console.log(obj3);
+
+    //Create an array with 5 items and then destructure the first 2 items into their own variables, and put the remaining items into array
+    const arr8 = [1, 2, 3, 4, 5];
+    const [a, b, ...rest] = arr8; // a, b, rest are variables
+    console.log(a, b, rest);
+  </script>
+</body>
+</html>

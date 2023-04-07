@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping list app</title>
+</head>
+
+<body>
+  <h1>Shopping list app</h1>
+  <div id="date-container"></div>
+  <button id="add-new">Add Date</button>
+
+  <script>
+    const BUDGET_DATA =  "BUGET_DATA"
+    // Get or initialize budget data from sessionStorage
+    let budgetData = JSON.parse(sessionStorage.getItem(BUDGET_DATA)) || [];
+
+    const monthContainer = document.getElementById('date-container');
+    const addMonthBtn = document.getElementById('add-new');
+
+    // Render each month's data to the UI
+    function renderBudgetData() {
+      monthContainer.innerHTML = '';
+
+      budgetData.forEach((monthData, index) => {
+        const monthElement = document.createElement('div');
+        monthElement.innerHTML = `
+          <h2>${monthData.date}</h2>
+          <p>Budget: $${monthData.budget.toFixed(2)}</p>
+          <ul>
+            ${monthData.expenditures.map(expenditure => `
+              <li>
+                ${expenditure.description}: $${expenditure.cost.toFixed(2)}
+                <button class="edit-expenditure-btn" data-month="${index}" data-index="${monthData.expenditures.indexOf(expenditure)}">Edit</button>
+                <button class="delete-expenditure-btn" data-month="${index}" data-index="${monthData.expenditures.indexOf(expenditure)}">Delete</button>
+              </li>
+            `).join('')}
+          </ul>
+          <button class="add-expenditure-btn" data-month="${index}">Add Expenditure</button>
+        `;
+
+        monthContainer.appendChild(monthElement);
+      });
+
+      // Attach event listeners to buttons
+      document.querySelectorAll('.add-expenditure-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const monthIndex = e.target.getAttribute('data-month');
+          addExpenditure(monthIndex);
+        });
+      });
+
+      document.querySelectorAll('.edit-expenditure-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const monthIndex = e.target.getAttribute('data-month');
+          const expenditureIndex = e.target.getAttribute('data-index');
+          editExpenditure(monthIndex, expenditureIndex);
+        });
+      });
+
+      document.querySelectorAll('.delete-expenditure-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const monthIndex = e.target.getAttribute('data-month');
+          const expenditureIndex = e.target.getAttribute('data-index');
+          deleteExpenditure(monthIndex, expenditureIndex);
+        });
+      });
+    }
+
+    // Add a new month with a budget
+    function addMonth() {
+      const date = prompt('Enter a new month (MM/YYYY):');
+      if (!date) return;
+
+      const budget = parseFloat(prompt('Enter a budget for the month:'));
+      if (isNaN(budget)) return;
+
+      budgetData.push({
+        date: date,
+        budget: budget,
+        expenditures: []
+      });
+
+      renderBudgetData();
+      saveBudgetData();
+    }
+
+    // Add a new expenditure to a month
+    function addExpenditure(monthIndex) {
+      const description = prompt('Enter a description for the expenditure:');
+      if (!description) return;
+
+      const cost = parseFloat(prompt('Enter the cost of the expenditure:'));
+      if (isNaN(cost)) return;
+
+      budgetData[monthIndex].expenditures.push({
+        description: description,
+        cost: cost
+      });
+
+      renderBudgetData();
+      saveBudgetData();
+    }
+
+    // Edit an existing expenditure in a month
+    function editExpenditure(monthIndex, expenditureIndex) {
+      const expenditure = budgetData[monthIndex].expenditures[expenditureIndex];
+
+      const newDescription = prompt('Enter a new description for the expenditure:', expenditure.description);
+      if (newDescription === null) return;
+
+      const newCost = parseFloat(prompt('Enter a new cost for the expenditure:', expenditure.cost));
+      if (isNaN(newCost)) return;
+
+      expenditure.description = newDescription;
+      expenditure.cost = newCost;
+
+      renderBudgetData();
+      saveBudgetData();
+    }
+
+    // Delete an existing expenditure in a month
+    function deleteExpenditure(monthIndex, expenditureIndex) {
+      budgetData[monthIndex].expenditures.splice(expenditureIndex, 1);
+      renderBudgetData();
+      saveBudgetData();
+    }
+
+    // Save budget data to sessionStorage
+    function saveBudgetData() {
+      sessionStorage.setItem(BUDGET_DATA, JSON.stringify(budgetData));
+    }
+
+    // Attach event listener to "Add Month" button
+    addMonthBtn.addEventListener('click', addMonth);
+
+    // Initial render of budget data
+    renderBudgetData();
+  </script>
+</body>

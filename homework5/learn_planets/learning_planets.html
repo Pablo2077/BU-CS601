@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Things in Life | MET CS401/601</title>
+    <style>
+        .container {
+           padding-top: 20px;
+        }
+        img {       
+            height: 100px;
+            width: 100px;
+        }
+        .planet {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="display-6">Planets</div>
+                <span>Put the mouse on the planet to get its name</span>
+            </div>
+        </div>
+        <div class="before">
+            <img id="sun" title="sun" alt="sun" class="planet" src="./images/sun.png">
+            <img id="uranus" title="uranus" alt="uranus" class="planet" src="./images/uranus.png">
+            <img id="jupiter" title="jupiter" alt="jupiter" class="planet" src="./images/jupiter.png">
+            <img id="pluto" title="pluto" alt="pluto" class="planet" src="./images/pluto.png">
+            <img id="mars" title="mars" alt="mars" class="planet" src="./images/mars.jpg">
+            <img id="neptune" title="neptune" alt="neptune" class="planet" src="./images/neptune.png">
+            <img id="saturn" title="saturn" alt="saturn" class="planet" src="./images/saturn.png">
+            <img id="earth" title="earth" alt="earth" class="planet" src="./images/earth.jpg">
+            <img id="venus" title="venus" alt="venus" class="planet" src="./images/venus.png">
+            <img id="mercury" title="mercury" alt="mercury" class="planet" src="./images/mercury.png">
+        </div> 
+        <div class="row" style="padding-top: 40px;">
+            <div class="col">
+                <div class="display-6">Drop area</div>
+            </div>
+            <div>
+                Correct order: 0. Sun 1. Mercury  2. Venus   3. Earth   4. Mars 
+                5. Jupiter 6. Saturn   7. Uranus  8. Neptune 9. Pluto
+            </div>
+        </div>
+        <div id="result"></div>
+        <div class="row check-btn" style="display: none; margin-top:40px;">
+            <div class="col">
+                <button class="btn btn-primary" onclick="checkOrder()">Check the order</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 0. Sun     1. Mercury  2. Venus   3. Earth   4. Mars 
+        // 5. Jupiter 6. Saturn   7. Uranus  8. Neptune 9. Pluto
+        const correctOrder = ["sun","mercury", "venus", "earth", 
+        "mars", "jupiter", "saturn", "uranus", "neptune","pluto"];
+        window.addEventListener("DOMContentLoaded", event => {
+     
+        })
+        const planets = document.querySelectorAll(".before .planet");
+        planets.forEach(function(planet) {
+            planet.draggable = true;
+            planet.addEventListener("dragstart", function(e) {
+                e.dataTransfer.setData("text", e.target.id);
+            });
+            planet.addEventListener("dragend", function(e) {
+                e.dataTransfer.clearData();
+            });
+        });
+
+        document.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        });
+        document.addEventListener("drop", function(e) {
+            e.preventDefault();
+            const planetId = e.dataTransfer.getData("text");
+            const planet = document.getElementById(planetId);
+            document.getElementById("result").appendChild(planet);
+            const afterPlanets = document.querySelectorAll("#result .planet");
+            if(afterPlanets.length == planets.length) {
+                document.getElementsByClassName('check-btn')[0].style.display = "block";
+            }
+        });
+
+        function checkOrder() {
+            const currentOrder = [];
+            const planets = document.querySelectorAll("#result .planet");
+            planets.forEach(function(planet) {
+                currentOrder.push(planet.id);
+            });
+            console.log(currentOrder)
+            console.log(JSON.stringify(currentOrder), JSON.stringify(correctOrder))
+            if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
+                alert("Good Job!");
+            } else {
+                alert("Error, try again please!")
+                window.location.reload();
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

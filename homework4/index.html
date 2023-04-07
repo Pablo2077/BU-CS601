@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW4-Sichun Wang</title>
+    <style>
+        p[title=Rush2112]::first-line{
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        input::placeholder {
+            font-weight: bold;
+            color: red;
+            opacity: 0.8;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a::before {
+            content: '🔗';
+        }
+        a::after {
+            content: '(' attr(href) ')';
+        }
+
+        div[class=drake]::first-letter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(174, 25, 120);
+        }
+
+        li::marker {
+            content: '💽';
+            font-size: 1.5em;
+        }
+    </style>
+
+</head>
+<body>
+    <p title="Rush2112">
+        The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+        Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+        HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as interactive forms may be embedded into the rendered page.
+    </p>
+    <p title="Rush2112">
+        Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML (including XML dialects such as SVG, MathML or XHTML).[1] CSS is a cornerstone technology of 
+        the World Wide Web, alongside HTML and JavaScript.CSS is designed to enable the separation of content and presentation, including layout, colors, and fonts.[3] This separation can improve content accessibility; provide more flexibility and control 
+        in the specification of presentation characteristics; enable multiple web pages to share formatting by specifying the relevant CSS in a separate .css file, which reduces complexity and repetition in the structural content.
+    </p>
+    <p title="Rush2112">
+        JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating 
+        third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard.[10] It has dynamic typing, 
+        prototype-based object-orientation, and first-class functions.It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, 
+        standard data structures, and the Document Object Model (DOM).
+    </p>
+    <br>
+
+    <p>Please input password:</p> 
+    <input type="password"
+       name="password"
+       maxLength="8"
+       placeholder="less than 8 characters">
+   
+
+    <p> 
+        <a href="https://www.bu.edu/csmet/">Boston University-metcs</a><br>
+        <a href="https://www.bu.edu/met/degrees-certificates/applied-business-analytics-graduate-certificate/">Boston University-metada</a><br>
+        <a href="https://www.bu.edu/met/degrees-certificates/advanced-information-technology-graduate-certificate/" class="local-link">Boston University-metait</a>
+    </p>
+
+    <div class="drake">
+        Nothing Was the Same is the third studio album by Canadian rapper Drake. It was released on September 24, 2013, through OVO Sound, Young Money Entertainment, 
+        Cash Money Records, and Republic Records. Work on the record began in 2012 and continued through 2013.
+    </div>
+    <div class="drake">
+        Certified Lover Boy is the sixth studio album by Canadian rapper and singer Drake, released on September 3, 2021, by OVO Sound and Republic Records.
+    </div>
+    <div class="drake">
+        Scorpion is the fifth studio album by Canadian rapper and singer Drake. It was released on June 29, 2018, by Cash Money Records, Republic Records, 
+        and Young Money Entertainment. Scorpion is a double album consisting of 25 tracks. 
+    </div>
+
+    <p>Some albums by drake:</p>
+    <ul>
+        <li>Certified Lover Boy</li>
+        <li>Honestly, Nevermind</li>
+        <li>Scorpion</li>
+        <li>Take Care</li>
+        <li>Nothing Was the Same</li>
+        <li>More Life</li>
+        <li>Thank Me Later</li>
+    </ul>
+</body>
+</html>

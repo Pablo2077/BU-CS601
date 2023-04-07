@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Things in Life | MET CS401/601</title>
+    <style>
+        .container {
+            width: 60vw;
+        }
+
+        textarea {
+            height: 25vh;
+            border-radius: 12px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="display-6">My favorite Things in Life:</div>
+                <textarea id="favoriteThingInput" class="form-control mt-4" rows="3"></textarea>
+                <div class="col-md-4 mt-4">
+                    <button id="addFavoriteThingBtn" class="btn btn-primary">Add</button>
+                    <button id="resetFavoriteThingsBtn" class="btn btn-secondary">Reset</button>
+                </div>
+                <div class="col p-2">
+                    <ul id="favoriteThingsList"></ul>
+                </div>
+            </div>
+            <script>
+                // Wait for the DOM to load before attaching event listeners
+                document.addEventListener("DOMContentLoaded", function () {
+
+                    // Get the UI elements
+                    const favoriteThingInput = document.getElementById("favoriteThingInput");
+                    const addFavoriteThingBtn = document.getElementById("addFavoriteThingBtn");
+                    const resetFavoriteThingsBtn = document.getElementById("resetFavoriteThingsBtn");
+                    const favoriteThingsList = document.getElementById("favoriteThingsList");
+
+                    // Attach event listeners to UI elements
+                    favoriteThingInput.addEventListener("keyup", function (event) {
+                        if (event.key === "Enter") {
+                            addFavoriteThingToList(favoriteThingInput.value);
+                        }
+                    });
+
+                    addFavoriteThingBtn.addEventListener("click", function () {
+                        addFavoriteThingToList(favoriteThingInput.value);
+                    });
+
+                    resetFavoriteThingsBtn.addEventListener("click", function () {
+                        resetFavoriteThingsList();
+                    });
+
+                    // Function to add a favorite thing to the list
+                    function addFavoriteThingToList(favoriteThing) {
+                        
+                        // Create a new list item
+                        var listItem = document.createElement("li");
+                        listItem.textContent = favoriteThing;
+                        favoriteThingsList.appendChild(listItem);
+                        // Clear the input field
+                        favoriteThingInput.value = "";
+                    }
+
+                    // Function to reset the list of favorite things
+                    function resetFavoriteThingsList() {
+                        // Remove all list items from the list
+                        while (favoriteThingsList.firstChild) {
+                            favoriteThingsList.removeChild(favoriteThingsList.firstChild);
+                        }
+                    }
+
+                });
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>
